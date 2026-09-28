@@ -1,0 +1,52 @@
+.header {
+    background-color: #ffffff;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    max-width: 1820px;
+    margin: 15px auto 0;
+    padding: 20px 40px;
+}
+
+.nav {
+    display: flex;
+    gap: 100px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 130px;
+}
+
+.logo img {
+    width: 290px;
+}
+
+.nav a {
+    font-size: 20px;
+    font-weight:600px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.btn-outline {
+    border: 2px solid #111111;
+    background-color: #ffffff;
+    color: #111111;
+}
+
+.btn-primary {
+    border: 2px solid #111111;
+    background-color: #FFC928;
+    color:#111111;
+}
