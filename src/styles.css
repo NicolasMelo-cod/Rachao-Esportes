@@ -1,1 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&display=swap');
+
+/*
+Configurações pra tirar aquele recuo que o navegador deixa normalmente, fica muito estranho kkkk
+*/
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
