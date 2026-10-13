@@ -76,9 +76,7 @@ Inicie o servidor de desenvolvimento:
 
 npx ng serve
 
-Acesse no navegador:
-
-http://localhost:4200
+Acesse no navegador
 
 O servidor de desenvolvimento recarrega a aplicação quando os arquivos são alterados.
 
