@@ -9,3 +9,16 @@ Configurações pra tirar aquele recuo que o navegador deixa normalmente, fica m
     margin: 0px;
     padding: 0px;
 }
+
+html,
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+    font-family: inherit;
+}
