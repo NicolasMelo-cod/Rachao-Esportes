@@ -41,7 +41,5 @@ onSubmit(): void {
     this.loginForm.markAllAsTouched();
     return;
   }
-
-  console.log('Formulário válido. Aguardando integração com o Backend.');
 }
 }

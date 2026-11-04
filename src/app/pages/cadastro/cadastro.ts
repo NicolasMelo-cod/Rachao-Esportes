@@ -7,80 +7,61 @@ import {
   FormGroup,
   ReactiveFormsModule,
   ValidationErrors,
-  Validators
+  Validators,
 } from '@angular/forms';
+import { Footer } from '../../compartilhado/footer/footer';
 
-function senhasIguaisValidator(
-  control: AbstractControl
-): ValidationErrors | null {
-
+function senhasIguaisValidator(control: AbstractControl): ValidationErrors | null {
   const senha = control.get('senha')?.value;
   const confirmarSenha = control.get('confirmarSenha')?.value;
 
-  // Não compara campos vazios.
-  // A obrigatoriedade será verificada pelos Validators.required.
   if (!senha || !confirmarSenha) {
     return null;
   }
 
-  // Se forem diferentes, o formulário recebe um erro.
-  return senha === confirmarSenha
-    ? null
-    : { senhasDiferentes: true };
+  return senha === confirmarSenha ? null : { senhasDiferentes: true };
 }
 
 @Component({
   selector: 'app-cadastro',
-  imports: [RouterLink, ReactiveFormsModule],
+  imports: [RouterLink, ReactiveFormsModule, Footer],
   templateUrl: './cadastro.html',
-  styleUrl: './cadastro.css'
+  styleUrl: './cadastro.css',
 })
 export class Cadastro {
-
   submitted = false;
 
   mostrarSenha = false;
   mostrarConfirmacaoSenha = false;
 
-  cadastroForm = new FormGroup({
+  cadastroForm = new FormGroup(
+    {
+      nome: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(3)],
+      }),
 
-    nome: new FormControl('', {
-      nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.minLength(3)
-      ]
-    }),
+      email: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.email],
+      }),
 
-    email: new FormControl('', {
-      nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.email
-      ]
-    }),
+      senha: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.minLength(8)],
+      }),
 
-    senha: new FormControl('', {
-      nonNullable: true,
-      validators: [
-        Validators.required,
-        Validators.minLength(8)
-      ]
-    }),
-
-    confirmarSenha: new FormControl('', {
-      nonNullable: true,
-      validators: [
-        Validators.required
-      ]
-    })
-
-  }, {
-    validators: senhasIguaisValidator
-  });
+      confirmarSenha: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+    },
+    {
+      validators: senhasIguaisValidator,
+    },
+  );
 
   onSubmit(): void {
-
     this.submitted = true;
 
     this.cadastroForm.markAllAsTouched();
@@ -88,9 +69,5 @@ export class Cadastro {
     if (this.cadastroForm.invalid) {
       return;
     }
-
-    console.log(
-      'Validações concluídas. Aguardando integração com o Backend.'
-    );
   }
 }
