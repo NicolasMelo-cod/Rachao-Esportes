@@ -1,0 +1,208 @@
+<div class="modal-overlay" [hidden]="!aberto">
+
+    <section class="modal-content" role="dialog" aria-modal="true">
+
+        <header class="modal-header">
+
+            <div>
+                <h2>Criar partida</h2>
+                <p>Organize seu próprio rachão.</p>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                (click)="fecharModal()"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+        </header>
+
+        <form
+            [formGroup]="partidaForm"
+            (ngSubmit)="onSubmit()"
+            novalidate
+        >
+
+            <div class="modal-body">
+
+                <div class="form-grid">
+
+                    <!-- Modalidade -->
+                    <div class="form-field">
+
+                        <label for="esporte">Esporte</label>
+
+                        <select id="esporte" formControlName="esporte">
+                            <option value="">Selecione o esporte</option>
+                            <option value="FUTEBOL">Futebol</option>
+                            <option value="BASQUETE">Basquete</option>
+                            <option value="VOLEI">Vôlei</option>
+                        </select>
+
+                        <small class="error-message"
+                            [hidden]="!submitted || !partidaForm.controls.esporte.invalid">
+                            Selecione uma modalidade.
+                        </small>
+
+                    </div>
+
+                    <!-- Data e horário -->
+                    <div class="form-field">
+
+                        <label for="dataHora">Data e horário</label>
+
+                        <input
+                            type="datetime-local"
+                            id="dataHora"
+                            formControlName="dataHora"
+                        >
+
+                        <small class="error-message"
+                            [hidden]="!submitted || !partidaForm.controls.dataHora.invalid">
+                            Informe a data e o horário.
+                        </small>
+
+                    </div>
+
+                    <!-- Duração -->
+                    <div class="form-field">
+
+                        <label for="duracao">Duração</label>
+
+                        <select id="duracao" formControlName="duracao">
+                            <option value="">Selecione a duração</option>
+                            <option value="00:30">30 minutos</option>
+                            <option value="01:00">1 hora</option>
+                            <option value="01:30">1 hora e 30 minutos</option>
+                            <option value="02:00">2 horas</option>
+                            <option value="02:30">2 horas e 30 minutos</option>
+                            <option value="03:00">3 horas</option>
+                        </select>
+
+                        <small class="error-message"
+                            [hidden]="!submitted || !partidaForm.controls.duracao.invalid">
+                            Selecione a duração.
+                        </small>
+
+                    </div>
+
+                    <!-- Quantidade de times -->
+                    <div class="form-field">
+
+                        <label for="qtdTimes">Quantidade de times</label>
+
+                        <input
+                            type="number"
+                            id="qtdTimes"
+                            formControlName="qtdTimes"
+                            min="2"
+                            placeholder="Ex.: 2"
+                        >
+
+                        <small class="error-message"
+                            [hidden]="!submitted || !partidaForm.controls.qtdTimes.invalid">
+                            Informe pelo menos 2 times.
+                        </small>
+
+                    </div>
+
+                    <!-- Jogadores por time -->
+                    <div class="form-field">
+
+                        <label for="qtdJogadoresTime">Jogadores por time</label>
+
+                        <input
+                            type="number"
+                            id="qtdJogadoresTime"
+                            formControlName="qtdJogadoresTime"
+                            min="1"
+                            placeholder="Ex.: 7"
+                        >
+
+                        <small class="error-message"
+                            [hidden]="!submitted || !partidaForm.controls.qtdJogadoresTime.invalid">
+                            Informe pelo menos 1 jogador.
+                        </small>
+
+                    </div>
+
+                    <!-- Local -->
+                    <div class="form-field form-field-full">
+
+                        <label for="local">Local da partida</label>
+
+                        <input
+                            type="text"
+                            id="local"
+                            formControlName="local"
+                            placeholder="Ex.: Quadra Central"
+                        >
+
+                        <small class="error-message"
+                            [hidden]="!submitted || !partidaForm.controls.local.invalid">
+                            Informe o local da partida.
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div class="participant-summary">
+
+                <span>Capacidade total da partida</span>
+
+                <strong>{{ totalParticipantes }} jogadores</strong>
+
+            </div>
+
+            <div class="modal-body">
+
+    <!-- Dados da partida -->
+    <div class="form-grid">
+        <!-- Seus campos atuais -->
+    </div>
+
+    <!-- Local da partida -->
+    <div class="form-field form-field-full">
+        <!-- Seu campo Local da partida atual -->
+    </div>
+    <div class="form-grid">
+
+        <div class="form-field form-field-full address-heading">
+            <h3>Endereço da partida</h3>
+            <p>Informe o CEP para preencher o endereço automaticamente.</p>
+        </div>
+
+    </div>
+
+</div>
+
+            </div>
+
+            <footer class="modal-footer">
+
+                <button
+                    type="button"
+                    class="btn-cancelar"
+                    (click)="fecharModal()"
+                >
+                    Cancelar
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-criar"
+                >
+                    Criar partida
+                </button>
+
+            </footer>
+
+        </form>
+
+    </section>
+
+</div>

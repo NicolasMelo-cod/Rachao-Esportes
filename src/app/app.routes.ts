@@ -4,9 +4,10 @@ import { Home } from './pages/home/home';
 import { Login } from './pages/login/login';
 import { Cadastro } from './pages/cadastro/cadastro';
 import { Partidas } from './pages/partidas/partidas';
+import { CriarPartida } from './pages/criar-partida/criar-partida'; 
 
 export const routes: Routes = [
-    {
+{
         path: '',
         component: Home
     },
@@ -22,5 +23,7 @@ export const routes: Routes = [
 {
     path: 'partidas',
     component: Partidas
-}
+},
+{   path: 'criar-partida',
+    component: CriarPartida }
 ];

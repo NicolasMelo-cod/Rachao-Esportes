@@ -12,33 +12,19 @@
 
         <nav class="sidebar-nav">
 
-            <a routerLink="/partidas" class="sidebar-link active">
-                Encontrar partidas
-            </a>
+    <a routerLink="/partidas" class="sidebar-link active">
+        Encontrar partidas
+    </a>
 
-            <a class="sidebar-link">
-                Minhas partidas
-            </a>
+    <a routerLink="/minhas-partidas" class="sidebar-link">
+        Minhas partidas
+    </a>
 
-            <a class="sidebar-link">
-                Criar partida
-            </a>
+    <a routerLink="/perfil" class="sidebar-link">
+        Perfil
+    </a>
 
-            <a class="sidebar-link">
-                Esportes
-            </a>
-
-            <a class="sidebar-link">
-                Perfil
-            </a>
-
-        </nav>
-
-        <div class="sidebar-footer">
-            <a routerLink="/">
-                Sair
-            </a>
-        </div>
+</nav>
 
     </aside>
 
@@ -89,14 +75,15 @@
                 <p>Veja jogos na sua região.</p>
             </article>
 
-            <article class="action-card">
-                <h3>Criar partida</h3>
-                <p>Organize seu próprio rachão.</p>
-            </article>
-
-            <article class="action-card">
-                <h3>Comunidade</h3>
-                <p>Conecte-se com outros jogadores.</p>
+            <article
+            class="action-card"
+            role="button"
+            tabindex="0"
+            (click)="abrirModal()"
+            (keydown.enter)="abrirModal()"
+>
+            <h3>Criar partida</h3>
+            <p>Organize seu próprio rachão.</p>
             </article>
 
         </section>
@@ -169,7 +156,10 @@
                     </button>
 
                 </article>
-
+                <app-criar-partida
+                    [aberto]="modalAberto"
+                    (fechar)="fecharModal()"
+                ></app-criar-partida>
             </div>
 
         </section>
